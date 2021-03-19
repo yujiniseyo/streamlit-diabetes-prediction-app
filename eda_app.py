@@ -83,3 +83,11 @@ def run_eda_app() :
         st.set_option('deprecation.showPyplotGlobalUse', False)
         sns.heatmap(df.corr(), annot = True, vmax = 1, vmin = -1)
         st.pyplot()
+
+    # 히스토그램 보기 버튼을 누르면 히스토그램을 보여준다.
+
+    hist_bnt = st.button('Show Histogram')
+    if hist_bnt :
+        # st.set_option('deprecation.showPyplotGlobalUse', False)
+        df.hist(figsize = (20,20))
+        st.pyplot()
