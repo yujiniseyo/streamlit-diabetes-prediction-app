@@ -80,6 +80,6 @@ def run_eda_app() :
 
     heatmap_bnt = st.button('Show Heatmap')
     if heatmap_bnt :
-        df_corr = df.corr()
-        sns.heatmap(df_corr, annot = True, vmax = 1, vmin = -1)
+        st.set_option('deprecation.showPyplotGlobalUse', False)
+        sns.heatmap(df.corr(), annot = True, vmax = 1, vmin = -1)
         st.pyplot()
