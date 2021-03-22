@@ -30,21 +30,20 @@ st.set_page_config(page_title = 'Diabetes Prediction App made by yujiniseyo' , p
 def main() :
     st.title('당뇨병 예측 앱')
 
+    st.image('https://miro.medium.com/max/2625/1*INSggrGiQ1lCgU8YTsfEVw.png')
+
     menu = ['Home' , 'EDA' , 'Predict' , 'About']
     choice = st.sidebar.selectbox('Menu', menu)
 
     if choice == 'Home' :
-        st.image('https://miro.medium.com/max/2625/1*INSggrGiQ1lCgU8YTsfEVw.png')
         st.write('이 앱은 환자 데이터를 바탕으로 당뇨병을 예측하는 앱입니다.')
         st.write("이 앱에 사용된 인공지능 예측 모델은 'over sampling - random forest'이고, 정확도는 83.5% 입니다 !" )
         st.write('왼쪽의 사이드바에서 원하시는 메뉴를 선택하세요.')
 
     elif choice == 'EDA' :
-        st.image('https://miro.medium.com/max/2625/1*INSggrGiQ1lCgU8YTsfEVw.png')
         run_eda_app()
 
     elif choice == 'Predict' :
-        st.image('https://miro.medium.com/max/2625/1*INSggrGiQ1lCgU8YTsfEVw.png')
         run_ml_app()
 
     elif choice == 'About' :
