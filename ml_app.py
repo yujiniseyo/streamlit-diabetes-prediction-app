@@ -7,63 +7,46 @@ from dateutil import parser
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-# from xgboost import XGBClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix,classification_report,accuracy_score
 from sklearn.model_selection import GridSearchCV
 import pickle
-# from lightgbm import LGBMClassifier
+from lightgbm import LGBMClassifier
 import os 
 from sklearn.impute import SimpleImputer
-# from imblearn.over_sampling import SMOTE
+from imblearn.over_sampling import SMOTE
+import joblib
+import altair as alt 
+from sklearn.impute import SimpleImputer
 
 
 def run_ml_app():
-    st.subheader('Machine Learning')
+    st.subheader("Let's predict diabetes.")
 
-    menu = ['Xgboost' , 'Random Forest' , 'SVC' , 'XgBoost - After Over sampling' , 'Random Forest - After Over sampling' , 'SVC - After Over sampling']
-    choice = st.selectbox('예측 모델을 선택하세요.', menu)
+    input_data = []
 
-    new_data - np.array([3,88,58,11,54,24,0.26,22])
+
+
+    new_data = np.array([6,148,72,35,54,33,0.62,50])
     new_data = new_data.reshape(1, -1)
 
-    if choice == 'Xgboost' :
-        st.write('Xgboost를 선택하셨습니다.')
-        st.write('Xgboost는 여러개의 Decision Tree를 조합하여, Regression과 Classification 문제를 모두 지원하며,')
-        st.write('성능과 자원 효율이 좋아서 인기 있게 사용되는 알고리즘 입니다.')
+    # Pregnancies = st.number_input('임신 횟수를 입력하세요.', min_value = 0)
+    # Glucose = st.number_input('공복 혈당 수치를 입력하세요.', min_value = 1)
+    # BloodPressure = st.number_input('혈압을 입력하세요.', min_value = 1)
+    # SkinThickness = st.number_input('피부 두께를 입력하세요.', min_value = 1)
+    # Insulin = st.number_input('인슐린 수치를 입력하세요.', min_value = 1)
+    # BMI = st.number_input('비만도를 입력하세요.', min_value = 1)
+    # Diabetes pedigree function = st.number_input('입력하세요.', min_value = 1)
+    # Age = st.number_input('나이를 입력하세요.', min_value = 1)
 
-        model = joblib.load('data/xgboostbest_model.pkl')
-        st.write(model.predict(new_data))
 
-
-
-    elif choice == 'Random Forest' :
-        st.write('Random Forest를 선택하셨습니다.')
-
-        model = joblib.load('data/random_forestbest_model.pkl')
-        st.write(model.predict(new_data))
-
-    elif choice == 'SVC' :
-        st.write('SVC를 선택하셨습니다.')
-
-        model = joblib.load('data/svc_model.pkl')
-        st.write(model.predict(new_data))
-
-    elif choice == 'XgBoost - After Over sampling' :
-        st.write('XgBoost - After Over sampling을 선택하셨습니다.')
-
-        model = joblib.load('data/oversam_xgboostbest_model.pkl')
-        st.write(model.predict(new_data))
-
-    elif choice == 'Random Forest - After Over sampling' :
-        st.write('Random Forest - After Over sampling을 선택하셨습니다.')
+  
+    if st.button('Predict') :
+        st.write('입력하신 정보로 당뇨병 예측을 시작합니다.')
+        st.write('0 : 당뇨병 X.')
+        st.write('1 : 당뇨병 O.')
 
         model = joblib.load('data/oversam_random_forestbest_model.pkl')
-        st.write(model.predict(new_data))
-
-    elif choice == 'SVC - After Over sampling' :
-        st.write('SVC - After Over sampling을 선택하셨습니다.')
-
-        model = joblib.load('data/oversam_svcbest_model.pkl')
-        st.write(model.predict(new_data))
+        result = st.text(model.predict(new_data))
+        
