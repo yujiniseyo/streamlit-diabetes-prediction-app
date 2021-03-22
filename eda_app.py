@@ -28,6 +28,7 @@ import altair as alt
 from sklearn.impute import SimpleImputer
 
 
+
 def run_eda_app() :
     st.subheader('Exploratory Data Analysis, 탐색적 데이터 분석')
 
@@ -79,8 +80,8 @@ def run_eda_app() :
 
 
     
-    graph_menu = ['Choose an option' , 'Heat Map' , 'Histogram' , 'Pie Chart']
-    selected_graph = st.selectbox('원하시는 차트를 선택하세요.', graph_menu)
+    graph_menu = ['Choose an option' , 'Heat Map' , 'Histogram']
+    selected_graph = st.selectbox('원하시는 그래프를 선택하세요.', graph_menu)
 
     if selected_graph == 'Heat Map' :
         st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -93,9 +94,6 @@ def run_eda_app() :
         df.hist(figsize = (20,20))
         st.pyplot()
     
-    elif selected_graph == 'Pie Chart' :
-        pass
-
     elif selected_graph == 'Choose an option' :
         st.write('선택한 차트가 없습니다.')
     

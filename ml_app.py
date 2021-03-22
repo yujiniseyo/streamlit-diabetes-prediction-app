@@ -51,3 +51,4 @@ def run_ml_app():
         model = joblib.load('data/oversam_random_forestbest_model.pkl')
         result = st.text(model.predict(new_data))
         
+
