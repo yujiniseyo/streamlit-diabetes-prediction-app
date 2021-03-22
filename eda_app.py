@@ -79,27 +79,25 @@ def run_eda_app() :
 
 
     
-    graph_menu = ['Heat Map' , 'Histogram' , 'Pie Chart']
+    graph_menu = ['Choose an option' , 'Heat Map' , 'Histogram' , 'Pie Chart']
     selected_graph = st.selectbox('원하시는 차트를 선택하세요.', graph_menu)
 
-    if len(selected_graph) == 0 :
+    if selected_graph == 'Heat Map' :
+        st.set_option('deprecation.showPyplotGlobalUse', False)
+        plt.figure(figsize = (20,20))
+        sns.heatmap(df.corr(), annot = True, vmax = 1, vmin = -1)
+        st.pyplot()
+
+    elif selected_graph == 'Histogram' :
+        st.set_option('deprecation.showPyplotGlobalUse', False)
+        df.hist(figsize = (20,20))
+        st.pyplot()
+    
+    elif selected_graph == 'Pie Chart' :
+        pass
+
+    elif selected_graph == 'Choose an option' :
         st.write('선택한 차트가 없습니다.')
-
-    else :
-
-        if selected_graph == 'Heat Map' :
-            st.set_option('deprecation.showPyplotGlobalUse', False)
-            plt.figure(figsize = (20,20))
-            sns.heatmap(df.corr(), annot = True, vmax = 1, vmin = -1)
-            st.pyplot()
-
-        elif selected_graph == 'Histogram' :
-            st.set_option('deprecation.showPyplotGlobalUse', False)
-            df.hist(figsize = (20,20))
-            st.pyplot()
-        
-        elif selected_graph == 'Pie Chart' :
-            pass
     
 
 
