@@ -12,10 +12,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix,classification_report,accuracy_score
 from sklearn.model_selection import GridSearchCV
 import pickle
-from lightgbm import LGBMClassifier
+# from lightgbm import LGBMClassifier
 import os 
 from sklearn.impute import SimpleImputer
-from imblearn.over_sampling import SMOTE
+# from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.datasets import make_blobs
 from tensorflow.keras.callbacks import ModelCheckpoint
@@ -53,7 +53,7 @@ def run_eda_app() :
     if len(selected_cols) != 0 :
         st.dataframe(df[selected_cols])
     else :
-        st.write('선택한 컬럼이 없습니다.')
+        st.write('선택한 데이터 컬럼이 없습니다.')
 
 
     # 상관계수를 화면에 보여주도록 만든다.
@@ -76,7 +76,7 @@ def run_eda_app() :
             st.pyplot(fig)
 
     else :
-        st.write('선택한 컬럼이 없습니다.')
+        st.write('선택한 상관계수 컬럼이 없습니다.')
 
 
     
@@ -95,7 +95,7 @@ def run_eda_app() :
         st.pyplot()
     
     elif selected_graph == 'Choose an option' :
-        st.write('선택한 차트가 없습니다.')
+        st.write('선택한 그래프가 없습니다.')
     
 
 

@@ -12,10 +12,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix,classification_report,accuracy_score
 from sklearn.model_selection import GridSearchCV
 import pickle
-from lightgbm import LGBMClassifier
+# from lightgbm import LGBMClassifier
 import os 
 from sklearn.impute import SimpleImputer
-from imblearn.over_sampling import SMOTE
+# from imblearn.over_sampling import SMOTE
 import joblib
 import altair as alt 
 from sklearn.impute import SimpleImputer
